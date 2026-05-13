@@ -1,0 +1,98 @@
+/* --- Base Footer Styles --- */
+.site-footer {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif', serif;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 40px;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: relative;
+  width: 90%;
+}
+
+/* --- Social Links Layout --- */
+.social-links {
+  display: flex;
+  justify-content: center; /* centers icons horizontally */
+  align-items: center;
+  gap: 20px; /* spacing between icons */
+  flex-wrap: wrap; /* wraps on small screens */
+  margin-bottom: 10px;
+}
+
+/* --- Social Link Container --- */
+.social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.social-links a:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+/* --- Footer Text --- */
+.footer-links {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+/* --- Footer Layout Adjustments --- */
+.site-footer {
+  padding: 1px 1px;        /* reduce height */
+  border-radius: 12px;
+}
+
+/* --- Social Icon Sizing --- */
+.social-links a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;     /* increase size for better visibility */
+  height: 72px;
+  margin: 0 12px;
+}
+
+.social-links a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* Optional: fine-tune specific icons */
+.social-links a img[src*="instagram"] {
+  transform: scale(0.6); /* subtle correction */
+}
+
+/* Center icons vertically within the footer */
+.site-footer .social-links {
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically */
+  height: 100%;             /* make sure it fills the footer height */
+}
+.site-footer .social-links {
+  margin-top: 8px; /* adjust this number until it looks perfect */
+}
+.site-footer p {
+    color: #111; /* or any dark color that shows on the footer background */
+    margin-bottom: 15px;   /* optional, to remove extra spacing */
+}
