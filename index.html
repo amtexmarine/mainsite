@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amtex</title>
+ 
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 25%, #0066aa 55%, #003d7a 80%, #001f4d 100%);
+  background-attachment: fixed;
+}
+
+/* ── KEYFRAMES ── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes waveShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── SCROLL ANIMATION BASE STATES ── */
+.anim-hidden {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.anim-hidden.scale {
+  transform: scale(0.96);
+}
+.anim-hidden.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ── VIDEO SECTION ── */
+.video-section {
+  width: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.video-section video {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+/* ── TEXT BAR ── */
+.text-bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 28px 0;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* shimmer sweep across text bar */
+.text-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.12) 50%,
+    transparent 100%);
+  background-size: 400px 100%;
+  animation: shimmer 3s ease infinite;
+  pointer-events: none;
+}
+
+.text-bar h1, .text-bar p {
+  margin: 10px;
+  line-height: 1.4;
+  color: white;
+}
+.text-bar h1 {
+  margin-bottom: 8px;
+}
+
+/* ── HERO SLIDESHOW ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+.hero-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.hero-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* ── DOTS ── */
+.hero .dots {
+  position: absolute;
+  bottom: 20px;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  background: rgba(0,0,0,0.25);
+  padding: 6px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+.hero .dot {
+  display: inline-block;
+  width: 12px; height: 12px;
+  margin: 0 6px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.hero .dot:hover {
+  transform: scale(1.3);
+}
+.hero .dot.active {
+  background-color: rgba(255,255,255,1);
+}
+
+/* ── BUTTON SECTION ── */
+.btn-section {
+  padding: 40px 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  background-size: 300% 300%;
+  animation: waveShift 8s ease infinite;
+  background-image: linear-gradient(135deg,
+    rgba(255,255,255,0.18) 0%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.18) 100%);
+}
+
+/* ── BUTTONS ── */
+.button-center {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 0;
+}
+.btn-large {
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 40px;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.btn-white {
+  background: rgba(255,255,255,0.7);
+  color: black;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.btn-white:hover {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border-color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+}
+.btn-black {
+  background: #001f4d;
+  color: white;
+  border: 2px solid #001f4d;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.btn-black:hover {
+  background: transparent;
+  color: white;
+  border-color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+}
+
+/* ── BOTTOM TEXT SECTION ── */
+.bottom-section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hero { height: 500px; padding: 0; }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: 90% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .hero .dots {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.25);
+    padding: 6px 14px;
+  }
+  .button-center { flex-direction: column; align-items: center; }
+}
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html"><img src="images/amtexlogo.png" alt="Amtex Logo" class="logo"></a>
+    <nav class="main-nav">
+     
+    </nav>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<br><br><br><br><br>
+
+<section class="video-section anim-hidden">
+  <video autoplay muted loop playsinline>
+    <source src="placeholders/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section>
+
+<section class="text-bar anim-hidden">
+  <h1 style="font-family:'Quicksand',sans-serif; text-align:center; margin-top:20px; font-weight:400; font-size:40px;">Amtex Marine</h1>
+  <p style="font-size:21px; font-weight:300;">Custom boat upholstery</p>
+</section>
+
+<section class="hero anim-hidden scale">
+  <div class="hero-slide active" style="background-image: url('placeholders/1.jpg');"></div>
+  <div class="hero-slide"        style="background-image: url('placeholders/2.jpg');"></div>
+  <div class="hero-slide"        style="background-image: url('placeholders/3.jpg');"></div>
+  <div class="dots">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot"        data-index="1"></span>
+    <span class="dot"        data-index="2"></span>
+  </div>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.hero-slide');
+const dots   = document.querySelectorAll('.dot');
+let currentIndex = 0;
+
+function showSlide(index) {
+  index = Number(index);
+  slides.forEach((s, i) => s.classList.toggle('active', i === index));
+  dots.forEach((d, i)   => d.classList.toggle('active', i === index));
+  currentIndex = index;
+}
+
+let interval = setInterval(() => showSlide((currentIndex + 1) % slides.length), 6000);
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    clearInterval(interval);
+    showSlide(dot.dataset.index);
+    interval = setInterval(() => showSlide((currentIndex + 1) % slides.length), 6000);
+  });
+});
+
+const sliderContainer = document.querySelector('.hero');
+let startX = 0;
+if (sliderContainer) {
+  sliderContainer.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+  sliderContainer.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      showSlide(diff > 0
+        ? (currentIndex + 1) % slides.length
+        : (currentIndex - 1 + slides.length) % slides.length);
+      clearInterval(interval);
+      interval = setInterval(() => showSlide((currentIndex + 1) % slides.length), 6000);
+    }
+  });
+}
+showSlide(0);
+</script>
+
+<section class="btn-section anim-hidden">
+  <div class="button-center">
+    <a href="projects.html" class="btn-large btn-white">Products</a>
+    <a href="contact.html"  class="btn-large btn-black">Contact</a>
+  </div>
+</section>
+
+<section class="bottom-section anim-hidden">
+  <h2 style="font-weight:400; font-size:30px; margin-bottom:20px; color:white;">Amtex Marine</h2>
+  <p style="font-size:19px; line-height:1.7; font-weight:300; color:white;">
+    (949)-645-6060
+  </p>
+</section>
+
+<script src="js/navbar.js"></script>
+
+<script>
+// Unified scroll-triggered reveal for all animated sections
+const animElements = document.querySelectorAll('.anim-hidden');
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      scrollObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+animElements.forEach(el => scrollObserver.observe(el));
+</script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>
+      <a href="https://instagram.com"    target="_blank" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram"></a>
+      <a href="https://X.com"            target="_blank" aria-label="X"><img src="images/X-icon.png" alt="X"></a>
+    </div>
+    <p>&copy; 2026 Amtex. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
