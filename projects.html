@@ -25,16 +25,9 @@ html, body {
   transform: translateY(36px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.anim-hidden.from-left {
-  transform: translateX(-40px);
-}
-.anim-hidden.from-right {
-  transform: translateX(40px);
-}
-.anim-hidden.visible {
-  opacity: 1;
-  transform: translate(0, 0);
-}
+.anim-hidden.from-left  { transform: translateX(-40px); }
+.anim-hidden.from-right { transform: translateX(40px); }
+.anim-hidden.visible    { opacity: 1; transform: translate(0, 0); }
 
 /* ── PAGE HEADER ── */
 .page-header {
@@ -74,7 +67,6 @@ html, body {
   gap: 60px;
   min-height: 280px;
 }
-
 .product-bar:nth-child(odd) {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
@@ -88,9 +80,6 @@ html, body {
   -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.product-bar:nth-child(even) {
   flex-direction: row-reverse;
 }
 
@@ -99,28 +88,32 @@ html, body {
   flex: 0 0 280px;
   height: 200px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.12);
+  overflow: hidden;
+  background: rgba(255,255,255,0.12) center/cover no-repeat;
   border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  /* fallback label */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.4);
-  font-size: 14px;
+  color: rgba(255,255,255,0.35);
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 .product-bar:hover .product-image {
-  background: rgba(255,255,255,0.2);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.3);
+  transform: scale(1.02);
+}
+/* hide the fallback text once an image is loaded */
+.product-image[style*="background-image"] {
+  color: transparent;
 }
 
 /* ── PRODUCT TEXT ── */
-.product-text {
-  flex: 1;
-}
+.product-text { flex: 1; }
 .product-tag {
   font-size: 11px;
   font-weight: 700;
@@ -170,7 +163,7 @@ html, body {
   .product-image {
     flex: none;
     width: 100%;
-    height: 160px;
+    height: 200px;
   }
   .product-name { font-size: 24px; }
 }
@@ -182,72 +175,74 @@ html, body {
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <a href="index.html"><img src="logos/amtexlogo.png" alt="Amtex Logo" class="logo"></a>
-    <nav class="main-nav">
-     
-    </nav>
+    <nav class="main-nav"></nav>
     <div class="hamburger"><span></span><span></span><span></span></div>
   </div>
 </header>
 
 <div class="page-header anim-hidden">
   <h1>Our Projects</h1>
-  <p>Placeholder text</p>
+  <p>Check out some of the things we've done!</p>
 </div>
 
+<!-- ── PROJECT 01 ── -->
 <div class="product-bar anim-hidden from-left">
-  <div class="product-image">Photo</div>
+  <div class="product-image" style="background-image: url('images/cover.jpeg');"></div>
   <div class="product-text">
-    <div class="product-tag">Project 01</div>
-    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-tag">Custom Boat Covers</div>
+    <h2 class="product-name">Full Mooring Cover</h2>
     <div class="product-divider"></div>
-    <div class="product-desc-label">Description</div>
-    <p class="product-desc">Placeholder text</p>
+    <div class="product-desc-label">Designed and fabricated a full custom mooring cover with reinforced marine-grade canvas for long-term weather protection and a clean, tailored fit.</div>
+  
   </div>
 </div>
 
+<!-- ── PROJECT 02 ── -->
 <div class="product-bar anim-hidden from-right">
-  <div class="product-image">Photo</div>
+  <div class="product-image" style="background-image: url('images/side.jpeg');"></div>
   <div class="product-text">
-    <div class="product-tag">Project 02</div>
-    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-tag">Yacht Upholstery & Enclosures</div>
+    <h2 class="product-name">Side Window Enclosure</h2>
     <div class="product-divider"></div>
-    <div class="product-desc-label">Description</div>
-    <p class="product-desc">Placeholder text</p>
+    <div class="product-desc-label">A Custom side window privacy enclosure using UV-resistant marine fabric to provide shade, protection, and a refined luxury appearance.</div>
   </div>
 </div>
 
+<!-- ── PROJECT 03 ── -->
 <div class="product-bar anim-hidden from-left">
-  <div class="product-image">Photo</div>
+  <div class="product-image" style="background-image: url('images/duffy_side.jpeg');"></div>
   <div class="product-text">
-    <div class="product-tag">Project 03</div>
-    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-tag">Custom Tonneau Covers</div>
+    <h2 class="product-name">Duffy Roof Cover</h2>
     <div class="product-divider"></div>
-    <div class="product-desc-label">Description</div>
-    <p class="product-desc">Placeholder text</p>
+    <div class="product-desc-label">A durable blue and white striped tonneau cover, handmade with excellent UV protection, water resistance, and a timeless nautical look.</div>
   </div>
 </div>
 
+<!-- ── PROJECT 04 ── -->
 <div class="product-bar anim-hidden from-right">
-  <div class="product-image">Photo</div>
+  <div class="product-image" style="background-image: url('images/lifeguard.jpeg');"></div>
   <div class="product-text">
-    <div class="product-tag">Project 04</div>
-    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-tag">Lifeguard Vessle</div>
+    <h2 class="product-name">California Lifegaurd Cruiser Refit</h2>
     <div class="product-divider"></div>
-    <div class="product-desc-label">Description</div>
-    <p class="product-desc">Placeholder text</p>
+    <div class="product-desc-label">We custom made new fabric covers and seats for California Lifeguard boats. </div>
+
   </div>
 </div>
 
+<!-- ── PROJECT 05 ── -->
 <div class="product-bar anim-hidden from-left">
-  <div class="product-image">Photo</div>
+  <div class="product-image" style="background-image: url('images/outdoor_furniture.jpeg');"></div>
   <div class="product-text">
-    <div class="product-tag">Project 05</div>
-    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-tag">Outdoor Seating</div>
+    <h2 class="product-name">Outdoor Cushions</h2>
     <div class="product-divider"></div>
-    <div class="product-desc-label">Description</div>
-    <p class="product-desc">Placeholder text</p>
+    <div class="product-desc-label">We also make custom outdoor cushions for outside seating areas!</div>
+   
   </div>
 </div>
+	
 
 <script src="js/navbar.js"></script>
 
@@ -263,6 +258,16 @@ const scrollObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 animElements.forEach(el => scrollObserver.observe(el));
+
+// Force-reveal anything already in view on load
+window.addEventListener('load', () => {
+  animElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('visible');
+    }
+  });
+});
 </script>
 
 <footer class="site-footer">
