@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amtex Projects</title>
+ 
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+ 
+  <style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 25%, #0066aa 55%, #003d7a 80%, #001f4d 100%);
+  background-attachment: fixed;
+}
+
+/* ── SCROLL ANIMATIONS ── */
+.anim-hidden {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.anim-hidden.from-left {
+  transform: translateX(-40px);
+}
+.anim-hidden.from-right {
+  transform: translateX(40px);
+}
+.anim-hidden.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 32px 0;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  margin-top: 100px;
+  box-sizing: border-box;
+}
+.page-header h1 {
+  margin: 0;
+  color: white;
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.page-header p {
+  margin: 10px 0 0;
+  color: rgba(255,255,255,0.75);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* ── PRODUCT BARS ── */
+.product-bar {
+  width: 100%;
+  padding: 60px 80px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  min-height: 280px;
+}
+
+.product-bar:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.product-bar:nth-child(even) {
+  background: rgba(0, 30, 80, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.product-bar:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* ── PRODUCT IMAGE ── */
+.product-image {
+  flex: 0 0 280px;
+  height: 200px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+.product-bar:hover .product-image {
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+/* ── PRODUCT TEXT ── */
+.product-text {
+  flex: 1;
+}
+.product-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 12px;
+}
+.product-name {
+  font-size: 32px;
+  font-weight: 400;
+  color: white;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+.product-divider {
+  width: 48px;
+  height: 2px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+.product-desc-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 10px;
+}
+.product-desc {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .product-bar {
+    flex-direction: column !important;
+    padding: 40px 24px;
+    gap: 28px;
+  }
+  .product-image {
+    flex: none;
+    width: 100%;
+    height: 160px;
+  }
+  .product-name { font-size: 24px; }
+}
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html"><img src="images/amtexlogo.png" alt="Amtex Logo" class="logo"></a>
+    <nav class="main-nav">
+     
+    </nav>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="page-header anim-hidden">
+  <h1>Our Projects</h1>
+  <p>Placeholder text</p>
+</div>
+
+<div class="product-bar anim-hidden from-left">
+  <div class="product-image">Photo</div>
+  <div class="product-text">
+    <div class="product-tag">Project 01</div>
+    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-divider"></div>
+    <div class="product-desc-label">Description</div>
+    <p class="product-desc">Placeholder text</p>
+  </div>
+</div>
+
+<div class="product-bar anim-hidden from-right">
+  <div class="product-image">Photo</div>
+  <div class="product-text">
+    <div class="product-tag">Project 02</div>
+    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-divider"></div>
+    <div class="product-desc-label">Description</div>
+    <p class="product-desc">Placeholder text</p>
+  </div>
+</div>
+
+<div class="product-bar anim-hidden from-left">
+  <div class="product-image">Photo</div>
+  <div class="product-text">
+    <div class="product-tag">Project 03</div>
+    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-divider"></div>
+    <div class="product-desc-label">Description</div>
+    <p class="product-desc">Placeholder text</p>
+  </div>
+</div>
+
+<div class="product-bar anim-hidden from-right">
+  <div class="product-image">Photo</div>
+  <div class="product-text">
+    <div class="product-tag">Project 04</div>
+    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-divider"></div>
+    <div class="product-desc-label">Description</div>
+    <p class="product-desc">Placeholder text</p>
+  </div>
+</div>
+
+<div class="product-bar anim-hidden from-left">
+  <div class="product-image">Photo</div>
+  <div class="product-text">
+    <div class="product-tag">Project 05</div>
+    <h2 class="product-name">Placeholder Product</h2>
+    <div class="product-divider"></div>
+    <div class="product-desc-label">Description</div>
+    <p class="product-desc">Placeholder text</p>
+  </div>
+</div>
+
+<script src="js/navbar.js"></script>
+
+<script>
+const animElements = document.querySelectorAll('.anim-hidden');
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      scrollObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+animElements.forEach(el => scrollObserver.observe(el));
+</script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram"></a>
+      <a href="https://X.com" target="_blank" aria-label="X"><img src="images/X-icon.png" alt="X"></a>
+    </div>
+    <p>&copy; 2026 Amtex. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amtex About</title>
+ 
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+ 
+  <style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00d4ff 0%, #0099cc 25%, #0066aa 55%, #003d7a 80%, #001f4d 100%);
+  background-attachment: fixed;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* ── SCROLL ANIMATION ── */
+.anim-hidden {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.anim-hidden.scale {
+  transform: scale(0.97);
+}
+.anim-hidden.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* staggered children inside the card */
+.hero-inner .anim-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.hero-inner .anim-child.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hero-inner .anim-child:nth-child(2) { transition-delay: 0.15s; }
+.hero-inner .anim-child:nth-child(3) { transition-delay: 0.3s; }
+.hero-inner .anim-child:nth-child(4) { transition-delay: 0.45s; }
+
+.hero-card {
+  width: 70%;
+  min-height: 70vh;
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  margin-top: 120px;
+  margin-bottom: 40px;
+  transition: box-shadow 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+
+.hero-card:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  background: rgba(255, 255, 255, 0.38);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.site-footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  height: 100%;
+  color: white;
+  padding-top: 40px;
+}
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html"><img src="images/amtexlogo.png" alt="Amtex Logo" class="logo"></a>
+    <nav class="main-nav">
+    
+    </nav>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<section class="hero-card anim-hidden scale">
+  <div class="hero-inner">
+    <h1 class="anim-child" style="font-size: 48px; font-weight: 300; color: white; margin-bottom: 16px;">About Us</h1>
+    <p class="anim-child" style="font-size: 20px; font-weight: 300; color: white; max-width: 600px; line-height: 1.7;">We are a custom boat upholstery company based in California. etc. etc.</p>
+  </div>
+</section>
+
+<script src="js/navbar.js"></script>
+
+<script>
+const animElements = document.querySelectorAll('.anim-hidden');
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+
+      // also trigger staggered children inside
+      entry.target.querySelectorAll('.anim-child').forEach(child => {
+        child.classList.add('visible');
+      });
+
+      scrollObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+animElements.forEach(el => scrollObserver.observe(el));
+</script>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook"></a>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram"></a>
+      <a href="https://X.com" target="_blank" aria-label="X"><img src="images/X-icon.png" alt="X"></a>
+    </div>
+    <p>&copy; 2026 Amtex. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
