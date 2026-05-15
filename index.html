@@ -409,15 +409,16 @@ html, body {
 
 <script>
 /* ─────────────────────────────────────────────────────────
-   SLIDESHOW — translate-based with smooth swipe
+   SLIDESHOW — cinematic push + scale + fade
+   Outgoing: shrinks slightly, fades, exits in swipe direction
+   Incoming: enters from opposite side, expands into place
    ───────────────────────────────────────────────────────── */
-const slides      = document.querySelectorAll('.hero-slide');
-const dots        = document.querySelectorAll('.dot');
-let currentIndex  = 0;
-let swiping       = false;   // lock during animation to prevent rapid-fire
-const SLIDE_DUR   = 450;     // must match CSS transition duration (ms)
+const slides     = document.querySelectorAll('.hero-slide');
+const dots       = document.querySelectorAll('.dot');
+let currentIndex = 0;
+let animating    = false;
+const SLIDE_DUR  = 400;
 
-// Lazy-load slideshow images when the hero enters the viewport
 const heroEl = document.getElementById('heroSlider');
 const lazySlideObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -432,67 +433,68 @@ const lazySlideObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '200px' });
 if (heroEl) lazySlideObserver.observe(heroEl);
 
-/**
- * showSlide(nextIndex, direction)
- *   direction: 'forward' (default) → new slide enters from right
- *              'backward'          → new slide enters from left
- */
-function showSlide(nextIndex, direction = 'forward') {
-  if (swiping || nextIndex === currentIndex) return;
-  swiping = true;
-
-  const outgoing = slides[currentIndex];
-  const incoming = slides[nextIndex];
-
-  // Position incoming off-screen in the correct direction
-  if (direction === 'forward') {
-    // incoming starts at right, outgoing exits left
-    incoming.classList.remove('exit-left', 'enter-left', 'active');
-    incoming.style.transform = 'translateX(100%)';
-  } else {
-    // incoming starts at left, outgoing exits right
-    incoming.classList.remove('exit-left', 'enter-left', 'active');
-    incoming.style.transform = 'translateX(-100%)';
-  }
-
-  // Force a reflow so the browser registers the starting position
-  // before we apply the transition. One property read is enough.
-  void incoming.offsetWidth;
-
-  // Start sliding: incoming → center, outgoing → away
-  incoming.style.transform = 'translateX(0%)';
-  incoming.style.transition = `transform ${SLIDE_DUR}ms cubic-bezier(0.4, 0, 0.2, 1)`;
-
-  outgoing.style.transition = `transform ${SLIDE_DUR}ms cubic-bezier(0.4, 0, 0.2, 1)`;
-  outgoing.style.transform  = direction === 'forward'
-    ? 'translateX(-100%)'
-    : 'translateX(100%)';
-
-  // Update dots immediately (feels snappier)
-  dots.forEach((d, i) => d.classList.toggle('active', i === nextIndex));
-
-  // After transition: clean up classes/inline styles
-  setTimeout(() => {
-    outgoing.classList.remove('active');
-    outgoing.style.transform  = 'translateX(100%)';  // park off-screen right (CSS default)
-    outgoing.style.transition = '';
-
-    incoming.classList.add('active');
-    incoming.style.transform  = '';
-    incoming.style.transition = '';
-
-    currentIndex = nextIndex;
-    swiping = false;
-  }, SLIDE_DUR);
+function setStyle(el, props) {
+  Object.assign(el.style, props);
 }
 
-// Autoplay
+slides.forEach((s, i) => {
+  setStyle(s, {
+    position:   'absolute',
+    top:        '0',
+    left:       '0',
+    width:      '100%',
+    height:     '100%',
+    opacity:    i === 0 ? '1' : '0',
+    transform:  i === 0 ? 'translateX(0%) scale(1)' : 'translateX(100%) scale(1)',
+    transition: 'none',
+    zIndex:     i === 0 ? '1' : '0',
+    willChange: 'transform, opacity',
+  });
+});
+
+function showSlide(nextIndex, direction = 'forward') {
+  if (animating || nextIndex === currentIndex) return;
+  animating = true;
+
+  const out = slides[currentIndex];
+  const inc = slides[nextIndex];
+
+  const outExit  = direction === 'forward' ? 'translateX(-18%) scale(0.92)' : 'translateX(18%) scale(0.92)';
+  const incStart = direction === 'forward' ? 'translateX(100%) scale(1.04)'  : 'translateX(-100%) scale(1.04)';
+
+  const easing = `${SLIDE_DUR}ms cubic-bezier(0.76, 0, 0.24, 1)`;
+
+  setStyle(inc, { transition: 'none', transform: incStart, opacity: '0', zIndex: '2' });
+  setStyle(out, { zIndex: '1' });
+
+  void inc.offsetWidth;
+
+  setStyle(out, {
+    transition: `transform ${easing}, opacity ${easing}`,
+    transform:  outExit,
+    opacity:    '0',
+  });
+  setStyle(inc, {
+    transition: `transform ${easing}, opacity ${easing}`,
+    transform:  'translateX(0%) scale(1)',
+    opacity:    '1',
+  });
+
+  dots.forEach((d, i) => d.classList.toggle('active', i === nextIndex));
+
+  setTimeout(() => {
+    setStyle(out, { transition: 'none', transform: 'translateX(100%) scale(1)', opacity: '0', zIndex: '0' });
+    setStyle(inc, { zIndex: '1', willChange: 'auto' });
+    currentIndex = nextIndex;
+    animating    = false;
+  }, SLIDE_DUR + 40);
+}
+
 let autoplayInterval = setInterval(
   () => showSlide((currentIndex + 1) % slides.length, 'forward'),
-  6000
+  2500
 );
 
-// Dot clicks
 dots.forEach(dot => {
   dot.addEventListener('click', () => {
     const next = Number(dot.dataset.index);
@@ -501,50 +503,41 @@ dots.forEach(dot => {
     showSlide(next, dir);
     autoplayInterval = setInterval(
       () => showSlide((currentIndex + 1) % slides.length, 'forward'),
-      6000
+      2500
     );
   });
 });
 
-// Touch swipe
-let startX = 0;
-let startTime = 0;
+let startX = 0, startY = 0, startTime = 0;
 if (heroEl) {
   heroEl.addEventListener('touchstart', e => {
     startX    = e.touches[0].clientX;
+    startY    = e.touches[0].clientY;
     startTime = Date.now();
   }, { passive: true });
 
   heroEl.addEventListener('touchend', e => {
-    const diff     = startX - e.changedTouches[0].clientX;
-    const elapsed  = Date.now() - startTime;
-    // Require at least 40px movement OR a quick flick (<180ms and >15px)
-    const isSwipe  = Math.abs(diff) > 40 || (elapsed < 180 && Math.abs(diff) > 15);
+    const dx      = startX - e.changedTouches[0].clientX;
+    const dy      = startY - e.changedTouches[0].clientY;
+    const elapsed = Date.now() - startTime;
+    if (Math.abs(dy) > Math.abs(dx)) return;
+    const isSwipe = Math.abs(dx) > 40 || (elapsed < 200 && Math.abs(dx) > 15);
     if (!isSwipe) return;
 
     clearInterval(autoplayInterval);
-    if (diff > 0) {
-      // Swiped left → go forward
-      showSlide((currentIndex + 1) % slides.length, 'forward');
-    } else {
-      // Swiped right → go backward
-      showSlide((currentIndex - 1 + slides.length) % slides.length, 'backward');
-    }
+    showSlide(
+      dx > 0
+        ? (currentIndex + 1) % slides.length
+        : (currentIndex - 1 + slides.length) % slides.length,
+      dx > 0 ? 'forward' : 'backward'
+    );
     autoplayInterval = setInterval(
       () => showSlide((currentIndex + 1) % slides.length, 'forward'),
-      6000
+      2500
     );
   }, { passive: true });
 }
 
-// Initialize: park all non-active slides off-screen
-slides.forEach((s, i) => {
-  if (i !== 0) s.style.transform = 'translateX(100%)';
-});
-
-/* ─────────────────────────────────────────────────────────
-   SCROLL-TRIGGERED REVEAL
-   ───────────────────────────────────────────────────────── */
 const animElements = document.querySelectorAll('.anim-hidden');
 const scrollObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -553,22 +546,16 @@ const scrollObserver = new IntersectionObserver((entries) => {
       scrollObserver.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.12,
-  rootMargin: '0px 0px -20px 0px'
-});
+}, { threshold: 0.12, rootMargin: '0px 0px -20px 0px' });
 animElements.forEach(el => scrollObserver.observe(el));
 
-/* ─────────────────────────────────────────────────────────
-   PAUSE AUTOPLAY WHEN TAB IS HIDDEN
-   ───────────────────────────────────────────────────────── */
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
     clearInterval(autoplayInterval);
   } else {
     autoplayInterval = setInterval(
       () => showSlide((currentIndex + 1) % slides.length, 'forward'),
-      6000
+      2500
     );
   }
 });
