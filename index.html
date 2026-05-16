@@ -3,7 +3,74 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Amtex</title>
+
+  <!-- ── PRIMARY SEO ── -->
+  <title>Amtex Marine | Custom Boat Upholstery — Orange County, CA</title>
+  <meta name="description" content="Amtex Marine specializes in custom boat upholstery and marine interior restoration in Orange County, CA. Quality craftsmanship for Duffy boats, yachts, and all watercraft. Call (949) 645-6060." />
+  <meta name="keywords" content="boat upholstery, marine upholstery, custom boat seats, boat interior restoration, Orange County boat upholstery, Newport Beach marine upholstery, Duffy boat upholstery, yacht upholstery" />
+  <link rel="canonical" href="https://amtexmarine.com/index.html" />
+
+  <!-- ── GEO ── -->
+  <meta name="geo.region" content="US-CA" />
+  <meta name="geo.placename" content="Orange County, California" />
+  <meta name="geo.position" content="33.6189;-117.9298" />
+  <meta name="ICBM" content="33.6189, -117.9298" />
+
+  <!-- ── OPEN GRAPH ── -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://amtexmarine.com/" />
+  <meta property="og:title"       content="Amtex Marine | Custom Boat Upholstery — Orange County, CA" />
+  <meta property="og:description" content="Custom boat upholstery and marine interior restoration in Orange County, CA. Serving Duffy boats, yachts, and all watercraft. Call (949) 645-6060." />
+  <meta property="og:image"       content="https://amtexmarine.com/images/duffy_side.jpeg" />
+  <meta property="og:site_name"   content="Amtex Marine" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- ── TWITTER CARD ── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Amtex Marine | Custom Boat Upholstery — Orange County, CA" />
+  <meta name="twitter:description" content="Custom boat upholstery and marine interior restoration in Orange County, CA. Call (949) 645-6060." />
+  <meta name="twitter:image"       content="https://amtexmarine.com/images/duffy_side.jpeg" />
+
+  <!-- ── JSON-LD SCHEMA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Amtex Marine",
+    "description": "Custom boat upholstery and marine interior restoration in Orange County, California.",
+    "url": "https://amtexmarine.com",
+    "telephone": "+1-949-645-6060",
+    "image": "https://amtexmarine.com/images/duffy_side.jpeg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Orange County",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Newport Beach" },
+      { "@type": "City", "name": "Costa Mesa" },
+      { "@type": "City", "name": "Huntington Beach" },
+      { "@type": "County", "name": "Orange County" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Marine Upholstery Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Boat Seat Upholstery" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Marine Interior Restoration" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Duffy Boat Upholstery" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Yacht Interior Upholstery" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Boat Cover Fabrication" } }
+      ]
+    },
+    "sameAs": [
+      "https://www.facebook.com",
+      "https://instagram.com",
+      "https://X.com"
+    ]
+  }
+  </script>
 
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/footer.css">
@@ -12,15 +79,9 @@
   <style>
 /* ── RESET & BASE ── */
 *, *::before, *::after { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  margin: 0; padding: 0; height: 100%;
   font-family: 'Quicksand', sans-serif;
   min-height: 100vh;
   background: linear-gradient(135deg, #00d4ff 0%, #0099cc 25%, #0066aa 55%, #003d7a 80%, #001f4d 100%);
@@ -39,6 +100,14 @@ html, body {
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+@keyframes ripplePulse {
+  0%, 100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.18; }
+  50%       { transform: translate(-50%,-50%) scale(1.5); opacity: 0.06; }
+}
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
 
 /* ── SCROLL ANIMATION BASE STATES ── */
 .anim-hidden {
@@ -56,14 +125,13 @@ html, body {
   transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
   will-change: auto;
 }
-
 .anim-hidden:nth-of-type(1) { transition-delay: 0s; }
 .anim-hidden:nth-of-type(2) { transition-delay: 0.08s; }
 .anim-hidden:nth-of-type(3) { transition-delay: 0.16s; }
 .anim-hidden:nth-of-type(4) { transition-delay: 0.24s; }
 .anim-hidden:nth-of-type(5) { transition-delay: 0.32s; }
 
-/* ── VIDEO / HERO IMAGE SECTION ── */
+/* ── HERO IMAGE SECTION ── */
 .video-section {
   width: 100%;
   background: #000;
@@ -72,6 +140,7 @@ html, body {
   align-items: center;
   overflow: hidden;
   contain: layout style;
+  position: relative;
 }
 .video-section img {
   width: 100%;
@@ -79,18 +148,26 @@ html, body {
   object-fit: cover;
   display: block;
 }
+.video-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, transparent, rgba(0,55,110,0.6));
+  pointer-events: none;
+}
 
 /* ── TEXT BAR ── */
 .text-bar {
   width: 100%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 36px 0 32px;
   text-align: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.18);
   position: relative;
   overflow: hidden;
   contain: layout style;
@@ -100,11 +177,8 @@ html, body {
   position: absolute;
   top: 0; left: 0;
   width: 60%; height: 100%;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,255,255,0.14) 50%,
-    transparent 100%);
-  animation: shimmer 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+  animation: shimmer 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   pointer-events: none;
   will-change: transform;
 }
@@ -112,8 +186,101 @@ html, body {
   margin: 10px;
   line-height: 1.4;
   color: white;
+  position: relative;
+  z-index: 1;
 }
 .text-bar h1 { margin-bottom: 8px; }
+
+/* ── WAVE DIVIDER ── */
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0;
+  display: block;
+}
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 56px;
+}
+
+/* ── SERVICE STRIP ── */
+.service-strip {
+  width: 100%;
+  padding: 8px 24px 16px;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.service-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  padding: 32px 20px 28px;
+  text-align: center;
+  color: white;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.3s ease,
+              box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: -50px; left: 50%;
+  transform: translateX(-50%);
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.17);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+.service-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floatUp 4s ease-in-out infinite;
+}
+.service-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: rgba(255,255,255,0.88);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.service-card:nth-child(2) .service-icon { animation-delay: 0.6s; }
+.service-card:nth-child(3) .service-icon { animation-delay: 1.2s; }
+.service-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 5px;
+}
+.service-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
 
 /* ── HERO SLIDESHOW ── */
 .hero {
@@ -122,45 +289,34 @@ html, body {
   height: 70vh;
   overflow: hidden;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 0;
   contain: layout style;
 }
-
-/* Each slide is absolutely stacked; translateX controls position */
 .hero-slide {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  /* Default: parked off-screen to the right */
   transform: translateX(100%);
-  /* Smooth slide transition */
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
-
-/* Active slide sits at center */
-.hero-slide.active {
-  transform: translateX(0%);
-  z-index: 1;
-}
-
-/* Outgoing slide exits left */
-.hero-slide.exit-left {
-  transform: translateX(-100%);
-  z-index: 1;
-}
-
-/* Incoming slide from the left (back-swipe) */
-.hero-slide.enter-left {
-  transform: translateX(-100%);
-}
-
+.hero-slide.active   { transform: translateX(0%);    z-index: 1; }
+.hero-slide.exit-left { transform: translateX(-100%); z-index: 1; }
+.hero-slide.enter-left { transform: translateX(-100%); }
 .hero-slide img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: contain;
   object-position: center;
   display: block;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, rgba(0,40,100,0.45));
+  pointer-events: none;
+  z-index: 2;
 }
 
 /* ── DOTS ── */
@@ -172,7 +328,7 @@ html, body {
   transform: translateX(-50%);
   text-align: center;
   z-index: 10;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.28);
   padding: 6px 14px;
   border-radius: 20px;
   backdrop-filter: blur(4px);
@@ -190,21 +346,52 @@ html, body {
 .hero .dot:hover  { transform: scale(1.3); }
 .hero .dot.active { background-color: rgba(255,255,255,1); }
 
+/* ── WAVE BETWEEN SLIDER AND BUTTONS ── */
+.wave-mid {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+.wave-mid svg {
+  display: block;
+  width: 100%;
+  height: 48px;
+}
+
 /* ── BUTTON SECTION ── */
 .btn-section {
-  padding: 40px 20px;
+  padding: 48px 20px 54px;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255,255,255,0.25);
-  border-bottom: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.18);
   background-size: 300% 300%;
   animation: waveShift 8s ease infinite;
   background-image: linear-gradient(135deg,
-    rgba(255,255,255,0.18) 0%,
-    rgba(255,255,255,0.08) 50%,
-    rgba(255,255,255,0.18) 100%);
+    rgba(255,255,255,0.15) 0%,
+    rgba(255,255,255,0.05) 50%,
+    rgba(255,255,255,0.15) 100%);
   contain: layout style;
+  text-align: center;
+}
+.btn-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 16px;
+}
+.section-rule {
+  width: 50px;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  margin: 0 auto 28px;
+  border-radius: 2px;
 }
 
 /* ── BUTTONS ── */
@@ -215,8 +402,8 @@ html, body {
   margin-top: 0;
 }
 .btn-large {
-  padding: 16px 40px;
-  font-size: 1.1rem;
+  padding: 16px 44px;
+  font-size: 1.05rem;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -232,97 +419,149 @@ html, body {
   will-change: transform;
 }
 .btn-white {
-  background: rgba(255,255,255,0.7);
-  color: black;
+  background: rgba(255,255,255,0.75);
+  color: #001f4d;
   border: 2px solid rgba(255,255,255,0.6);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
 }
 .btn-white:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.15);
   color: white;
   border-color: white;
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.22);
 }
 .btn-black {
   background: #001f4d;
   color: white;
-  border: 2px solid #001f4d;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
 }
 .btn-black:hover {
   background: transparent;
   color: white;
   border-color: white;
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.22);
 }
 
-/* ── BOTTOM TEXT SECTION ── */
+/* ── CONTACT SECTION ── */
 .bottom-section {
-  padding: 60px 20px;
+  padding: 68px 20px 80px;
   max-width: 900px;
   margin: auto;
   text-align: center;
+  position: relative;
+}
+.ripple-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  animation: ripplePulse 6s ease-in-out infinite;
+}
+.ripple-ring-1 { width: 420px; height: 420px; animation-delay: 0s; }
+.ripple-ring-2 { width: 260px; height: 260px; animation-delay: 1.2s; }
+
+.contact-heading {
+  font-weight: 300;
+  font-size: 28px;
+  margin: 0 0 8px;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+.contact-rule {
+  width: 40px;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  margin: 0 auto 26px;
+  border-radius: 2px;
+  position: relative;
+  z-index: 1;
+}
+.contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 40px;
+  padding: 14px 34px;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.25s ease,
+              transform 0.25s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.25s ease;
+  position: relative;
+  z-index: 1;
+}
+.contact-phone:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.22);
+}
+.contact-phone svg {
+  width: 19px; height: 19px;
+  stroke: white; fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.contact-location {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
-  /* Remove the <br><br> visual effect — handled by padding instead */
   body > br { display: none; }
+  .video-section img { max-height: 55vw; }
+  .text-bar { padding: 24px 16px; }
+  .text-bar h1 { font-size: 28px !important; margin: 6px; }
+  .text-bar p  { font-size: 17px !important; margin: 4px; }
 
-  .video-section img {
-    max-height: 55vw;
-  }
+  .wave-divider svg { height: 36px; }
+  .wave-mid svg     { height: 32px; }
 
-  .text-bar {
-    padding: 24px 16px;
-  }
-  .text-bar h1 {
-    font-size: 28px !important;
-    margin: 6px;
-  }
-  .text-bar p {
-    font-size: 17px !important;
-    margin: 4px;
-  }
+  .service-strip { padding: 4px 12px 12px; }
+  .service-grid  { gap: 10px; }
+  .service-card  { padding: 22px 10px 18px; border-radius: 16px; }
+  .service-icon  { width: 38px; height: 38px; margin-bottom: 10px; }
+  .service-title { font-size: 13px; }
+  .service-label { font-size: 9px; letter-spacing: 1.5px; }
 
   .hero {
     height: 56vw;
     min-height: 220px;
     max-height: 420px;
     margin-top: 44px;
-    margin-bottom: 44px;
-    padding: 0;
   }
+  .hero .dots { bottom: 10px; }
 
-  .hero .dots {
-    bottom: 10px;
-  }
+  .btn-section { padding: 36px 16px 42px; }
+  .button-center { flex-direction: column; align-items: center; gap: 14px; }
+  .btn-large { width: 80%; text-align: center; padding: 14px 24px; }
 
-  .btn-section {
-    padding: 36px 16px;
-  }
-  .button-center {
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-  .btn-large {
-    width: 80%;
-    text-align: center;
-    padding: 14px 24px;
-  }
-
-  .bottom-section {
-    padding: 48px 20px;
-  }
-  .bottom-section h2 {
-    font-size: 24px !important;
-  }
-  .bottom-section p {
-    font-size: 17px !important;
-  }
+  .bottom-section { padding: 52px 20px 64px; }
+  .contact-heading { font-size: 22px !important; }
+  .contact-phone   { font-size: 17px; padding: 12px 26px; }
+  .ripple-ring-1   { width: 280px; height: 280px; }
+  .ripple-ring-2   { width: 170px; height: 170px; }
 }
   </style>
 </head>
@@ -331,88 +570,171 @@ html, body {
 
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
-    <a href="index.html"><img src="logos/amtexlogo.png" alt="Amtex Logo" class="logo" loading="lazy" decoding="async"></a>
-    <nav class="main-nav"></nav>
-    <div class="hamburger"><span></span><span></span><span></span></div>
+    <a href="index.html"><img src="logos/amtexlogo.png" alt="Amtex Marine logo" class="logo" loading="lazy" decoding="async"></a>
+    <nav class="main-nav" aria-label="Main navigation"></nav>
+    <div class="hamburger" aria-label="Open menu" role="button" tabindex="0"><span></span><span></span><span></span></div>
   </div>
 </header>
 
 <br><br>
 
-<!-- Hero image: eager + high priority since it's above the fold -->
-<section class="video-section anim-hidden">
-  <img
-    src="images/duffy_side.jpeg"
-    alt="Duffy boat side view"
-    style="width:100%; max-height:80vh; object-fit:cover; display:block;"
-    loading="eager"
-    fetchpriority="high"
-    decoding="async"
-  >
-</section>
+<main>
 
-<section class="text-bar anim-hidden">
-  <h1 style="font-family:'Quicksand',sans-serif; text-align:center; margin-top:20px; font-weight:400; font-size:40px;">Amtex Marine</h1>
-  <p style="font-size:21px; font-weight:300;">Custom boat upholstery</p>
-</section>
-
-<section class="hero anim-hidden scale" id="heroSlider">
-  <div class="hero-slide active">
+  <!-- HERO IMAGE -->
+  <section class="video-section anim-hidden" aria-label="Amtex Marine boat upholstery showcase">
     <img
-      src="images/side.jpeg"
-      alt="Boat upholstery side view"
+      src="images/duffy_side.jpeg"
+      alt="Custom upholstered Duffy boat — Amtex Marine, Orange County CA"
+      style="width:100%; max-height:80vh; object-fit:cover; display:block;"
       loading="eager"
       fetchpriority="high"
       decoding="async"
+      width="1200"
+      height="675"
     >
-  </div>
-  <div class="hero-slide">
-    <img
-      data-src="images/duffy_detail.jpeg"
-      src=""
-      alt="Duffy boat detail"
-      loading="lazy"
-      decoding="async"
-    >
-  </div>
-  <div class="hero-slide">
-    <img
-      data-src="images/cover.jpeg"
-      src=""
-      alt="Boat cover"
-      loading="lazy"
-      decoding="async"
-    >
-  </div>
-  <div class="dots">
-    <span class="dot active" data-index="0"></span>
-    <span class="dot"        data-index="1"></span>
-    <span class="dot"        data-index="2"></span>
-  </div>
-</section>
+  </section>
 
-<section class="btn-section anim-hidden">
-  <div class="button-center">
-    <a href="projects.html" class="btn-large btn-white">Projects</a>
-    <a href="contact.html"  class="btn-large btn-black">Contact</a>
-  </div>
-</section>
+  <!-- TITLE BAR -->
+  <section class="text-bar anim-hidden">
+    <h1 style="font-family:'Quicksand',sans-serif; text-align:center; margin-top:20px; font-weight:400; font-size:40px;">Amtex Marine</h1>
+    <p style="font-size:21px; font-weight:300;">Custom boat upholstery — Orange County, CA</p>
+  </section>
 
-<section class="bottom-section anim-hidden">
-  <h2 style="font-weight:400; font-size:30px; margin-bottom:20px; color:white;">Amtex Marine</h2>
-  <p style="font-size:19px; line-height:1.7; font-weight:300; color:white;">
-    (949)-645-6060
-  </p>
-</section>
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,28 C200,56 400,0 600,28 C800,56 1000,0 1200,28 L1200,56 L0,56 Z" fill="rgba(255,255,255,0.07)"/>
+      <path d="M0,40 C250,12 500,52 750,32 C900,18 1050,44 1200,20 L1200,56 L0,56 Z" fill="rgba(255,255,255,0.04)"/>
+    </svg>
+  </div>
+
+  <!-- SERVICE CARDS -->
+  <section class="service-strip anim-hidden" aria-label="Services overview">
+    <div class="service-grid">
+
+      <div class="service-card">
+        <div class="service-icon" aria-hidden="true">
+          <!-- Upholstery needle/stitch icon -->
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="24" y1="6" x2="24" y2="42"/>
+            <path d="M15 15 Q24 5 33 15"/>
+            <path d="M11 30 Q24 46 37 30"/>
+            <circle cx="24" cy="6" r="3.5" fill="rgba(255,255,255,0.88)" stroke="none"/>
+          </svg>
+        </div>
+        <p class="service-label">Specialty</p>
+        <p class="service-title">Custom Upholstery</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" aria-hidden="true">
+          <!-- Boat hull icon -->
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 30 Q16 40 24 40 Q32 40 41 30"/>
+            <path d="M11 30 L15 16 L33 16 L37 30"/>
+            <path d="M19 16 L19 10 L29 10 L29 16"/>
+            <path d="M4 36 Q16 44 24 44 Q32 44 44 36"/>
+          </svg>
+        </div>
+        <p class="service-label">Expertise</p>
+        <p class="service-title">Marine Interiors</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" aria-hidden="true">
+          <!-- Location pin icon -->
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6 C16 6 10 12 10 20 C10 30 24 44 24 44 C24 44 38 30 38 20 C38 12 32 6 24 6 Z"/>
+            <circle cx="24" cy="20" r="5" stroke="rgba(0,60,120,0.5)" stroke-width="1.5" fill="rgba(255,255,255,0.4)"/>
+          </svg>
+        </div>
+        <p class="service-label">Location</p>
+        <p class="service-title">Orange County, CA</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHOTO SLIDESHOW -->
+  <section class="hero anim-hidden scale" id="heroSlider" aria-label="Marine upholstery project gallery">
+    <div class="hero-slide active">
+      <img
+        src="images/side.jpeg"
+        alt="Custom boat seat upholstery — side view of marine interior"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        width="1200"
+        height="675"
+      >
+    </div>
+    <div class="hero-slide">
+      <img
+        data-src="images/duffy_detail.jpeg"
+        src=""
+        alt="Duffy boat upholstery close-up detail — Amtex Marine craftsmanship"
+        loading="lazy"
+        decoding="async"
+        width="1200"
+        height="675"
+      >
+    </div>
+    <div class="hero-slide">
+      <img
+        data-src="images/cover.jpeg"
+        src=""
+        alt="Custom marine boat cover fabrication by Amtex Marine"
+        loading="lazy"
+        decoding="async"
+        width="1200"
+        height="675"
+      >
+    </div>
+    <div class="dots" role="tablist" aria-label="Slideshow navigation">
+      <span class="dot active" data-index="0" role="tab" aria-selected="true"  aria-label="Slide 1" tabindex="0"></span>
+      <span class="dot"        data-index="1" role="tab" aria-selected="false" aria-label="Slide 2" tabindex="0"></span>
+      <span class="dot"        data-index="2" role="tab" aria-selected="false" aria-label="Slide 3" tabindex="0"></span>
+    </div>
+  </section>
+
+  <!-- WAVE BETWEEN SLIDER AND BUTTONS -->
+  <div class="wave-mid" aria-hidden="true">
+    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,18 C300,48 600,0 900,28 C1050,42 1150,8 1200,18 L1200,48 L0,48 Z" fill="rgba(255,255,255,0.07)"/>
+    </svg>
+  </div>
+
+  <!-- CTA BUTTONS -->
+  <section class="btn-section anim-hidden">
+    <p class="btn-eyebrow">See our work &amp; get in touch</p>
+    <div class="section-rule"></div>
+    <div class="button-center">
+      <a href="projects.html" class="btn-large btn-white">View Projects</a>
+      <a href="contact.html"  class="btn-large btn-black">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="bottom-section anim-hidden" aria-label="Contact information">
+    <div class="ripple-ring ripple-ring-1" aria-hidden="true"></div>
+    <div class="ripple-ring ripple-ring-2" aria-hidden="true"></div>
+    <h2 class="contact-heading">Get in touch</h2>
+    <div class="contact-rule"></div>
+    <a href="tel:+19496456060" class="contact-phone" aria-label="Call Amtex Marine at (949) 645-6060">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.15 2 2 0 012.09 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      (949) 645-6060
+    </a>
+    <span class="contact-location">Orange County, California</span>
+  </section>
+
+</main>
 
 <script src="js/navbar.js"></script>
 
 <script>
-/* ─────────────────────────────────────────────────────────
-   SLIDESHOW — cinematic push + scale + fade
-   Outgoing: shrinks slightly, fades, exits in swipe direction
-   Incoming: enters from opposite side, expands into place
-   ───────────────────────────────────────────────────────── */
+/* ── SLIDESHOW ── */
 const slides     = document.querySelectorAll('.hero-slide');
 const dots       = document.querySelectorAll('.dot');
 let currentIndex = 0;
@@ -433,17 +755,11 @@ const lazySlideObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '200px' });
 if (heroEl) lazySlideObserver.observe(heroEl);
 
-function setStyle(el, props) {
-  Object.assign(el.style, props);
-}
+function setStyle(el, props) { Object.assign(el.style, props); }
 
 slides.forEach((s, i) => {
   setStyle(s, {
-    position:   'absolute',
-    top:        '0',
-    left:       '0',
-    width:      '100%',
-    height:     '100%',
+    position: 'absolute', top: '0', left: '0', width: '100%', height: '100%',
     opacity:    i === 0 ? '1' : '0',
     transform:  i === 0 ? 'translateX(0%) scale(1)' : 'translateX(100%) scale(1)',
     transition: 'none',
@@ -455,32 +771,22 @@ slides.forEach((s, i) => {
 function showSlide(nextIndex, direction = 'forward') {
   if (animating || nextIndex === currentIndex) return;
   animating = true;
-
   const out = slides[currentIndex];
   const inc = slides[nextIndex];
-
   const outExit  = direction === 'forward' ? 'translateX(-18%) scale(0.92)' : 'translateX(18%) scale(0.92)';
   const incStart = direction === 'forward' ? 'translateX(100%) scale(1.04)'  : 'translateX(-100%) scale(1.04)';
-
-  const easing = `${SLIDE_DUR}ms cubic-bezier(0.76, 0, 0.24, 1)`;
+  const easing   = `${SLIDE_DUR}ms cubic-bezier(0.76, 0, 0.24, 1)`;
 
   setStyle(inc, { transition: 'none', transform: incStart, opacity: '0', zIndex: '2' });
   setStyle(out, { zIndex: '1' });
-
   void inc.offsetWidth;
+  setStyle(out, { transition: `transform ${easing}, opacity ${easing}`, transform: outExit, opacity: '0' });
+  setStyle(inc, { transition: `transform ${easing}, opacity ${easing}`, transform: 'translateX(0%) scale(1)', opacity: '1' });
 
-  setStyle(out, {
-    transition: `transform ${easing}, opacity ${easing}`,
-    transform:  outExit,
-    opacity:    '0',
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', i === nextIndex);
+    d.setAttribute('aria-selected', i === nextIndex ? 'true' : 'false');
   });
-  setStyle(inc, {
-    transition: `transform ${easing}, opacity ${easing}`,
-    transform:  'translateX(0%) scale(1)',
-    opacity:    '1',
-  });
-
-  dots.forEach((d, i) => d.classList.toggle('active', i === nextIndex));
 
   setTimeout(() => {
     setStyle(out, { transition: 'none', transform: 'translateX(100%) scale(1)', opacity: '0', zIndex: '0' });
@@ -491,8 +797,7 @@ function showSlide(nextIndex, direction = 'forward') {
 }
 
 let autoplayInterval = setInterval(
-  () => showSlide((currentIndex + 1) % slides.length, 'forward'),
-  2500
+  () => showSlide((currentIndex + 1) % slides.length, 'forward'), 2500
 );
 
 dots.forEach(dot => {
@@ -502,8 +807,7 @@ dots.forEach(dot => {
     clearInterval(autoplayInterval);
     showSlide(next, dir);
     autoplayInterval = setInterval(
-      () => showSlide((currentIndex + 1) % slides.length, 'forward'),
-      2500
+      () => showSlide((currentIndex + 1) % slides.length, 'forward'), 2500
     );
   });
 });
@@ -511,11 +815,8 @@ dots.forEach(dot => {
 let startX = 0, startY = 0, startTime = 0;
 if (heroEl) {
   heroEl.addEventListener('touchstart', e => {
-    startX    = e.touches[0].clientX;
-    startY    = e.touches[0].clientY;
-    startTime = Date.now();
+    startX = e.touches[0].clientX; startY = e.touches[0].clientY; startTime = Date.now();
   }, { passive: true });
-
   heroEl.addEventListener('touchend', e => {
     const dx      = startX - e.changedTouches[0].clientX;
     const dy      = startY - e.changedTouches[0].clientY;
@@ -523,21 +824,18 @@ if (heroEl) {
     if (Math.abs(dy) > Math.abs(dx)) return;
     const isSwipe = Math.abs(dx) > 40 || (elapsed < 200 && Math.abs(dx) > 15);
     if (!isSwipe) return;
-
     clearInterval(autoplayInterval);
     showSlide(
-      dx > 0
-        ? (currentIndex + 1) % slides.length
-        : (currentIndex - 1 + slides.length) % slides.length,
+      dx > 0 ? (currentIndex + 1) % slides.length : (currentIndex - 1 + slides.length) % slides.length,
       dx > 0 ? 'forward' : 'backward'
     );
     autoplayInterval = setInterval(
-      () => showSlide((currentIndex + 1) % slides.length, 'forward'),
-      2500
+      () => showSlide((currentIndex + 1) % slides.length, 'forward'), 2500
     );
   }, { passive: true });
 }
 
+/* ── SCROLL ANIMATIONS ── */
 const animElements = document.querySelectorAll('.anim-hidden');
 const scrollObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -554,8 +852,7 @@ document.addEventListener('visibilitychange', () => {
     clearInterval(autoplayInterval);
   } else {
     autoplayInterval = setInterval(
-      () => showSlide((currentIndex + 1) % slides.length, 'forward'),
-      2500
+      () => showSlide((currentIndex + 1) % slides.length, 'forward'), 2500
     );
   }
 });
@@ -564,17 +861,17 @@ document.addEventListener('visibilitychange', () => {
 <footer class="site-footer">
   <div class="footer-content">
     <div class="social-links">
-      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Amtex Marine on Facebook">
         <img src="logos/facebook-icon.png" alt="Facebook" loading="lazy" decoding="async">
       </a>
-      <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Amtex Marine on Instagram">
         <img src="logos/instagram-icon.png" alt="Instagram" loading="lazy" decoding="async">
       </a>
-      <a href="https://X.com" target="_blank" aria-label="X">
+      <a href="https://X.com" target="_blank" rel="noopener noreferrer" aria-label="Amtex Marine on X">
         <img src="logos/X-icon.png" alt="X" loading="lazy" decoding="async">
       </a>
     </div>
-    <p>&copy; 2026 Amtex. All rights reserved.</p>
+    <p>&copy; 2026 Amtex Marine. All rights reserved.</p>
   </div>
 </footer>
 
